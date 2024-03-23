@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+<!-- Требования к функциональности React-project:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Базовый уровень:
+React
+Пишем функциональные компоненты c хуками.
+Есть четкое разделение на умные и глупые компоненты (https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0, перевод - https://habr.com/ru/post/266559/)
+Есть рендеринг списков
+Реализована хотя бы одна форма
+Есть применение Context API
+Есть применение предохранителя (error-boundary)
+Есть хотя бы один кастомный хук
+Поиск не должен триггерить много запросов к серверу
+Есть применение lazy + Suspense
+Redux
+Используем Modern Redux with Redux Toolkit (https://redux.js.org/tutorials/fundamentals/part-8-modern-redux) или RTK Query (https://redux.js.org/tutorials/essentials/part-7-rtk-query-basics)
+Используем слайсы (https://redux.js.org/tutorials/fundamentals/part-8-modern-redux#using-createslice)
+Есть хотя бы одна кастомная мидлвара (https://redux.js.org/understanding/history-and-design/middleware)
+TypeScript
+Использование TypeScript (https://ru.reactjs.org/docs/static-type-checking.html#typescript)
+_______________________________________________________________________________________________________________________
 
-## Available Scripts
+Продвинутый уровень:
+Проведена оптимизация приложения (https://redux.js.org/tutorials/essentials/part-6-performance-normalization)
+Используются мемоизированные селекторы (createSelector).
+Используется нормализованная структура стейта (createEntityAdapter).
+Storybook
+Подключен storybook и созданы несколько сторисов (https://storybook.js.org/)
 
-In the project directory, you can run:
+Feature Flags
+Реализовать фичу “Поделиться в телеграм”, закрытую под фича флагом.
+Если флаг с этой фичей включен, то у карточки единицы информации должна появиться кнопка “Поделиться”. Делимся ссылкой на единицу информации из вашего приложения. То есть, когда вы поделитесь ссылкой в телегу, из телеги по нажатию на эту ссылку у вас должно открыться приложение на странице единицы информации. Например, страница какого-то фильма. Но, возможно, в телеграм сообщении ссылка с урлом на localhost превратится в просто текст, не страшно. Если апи в единице информации присылает какую-нибудь ссылку на другой ресурс, например, для фильма будет ссылка на страницу с фильмом на https://www.imdb.com/, можно Поделиться ссылкой на imdb, чтобы она красиво отобразилась в телеграм сообщении. Подробнее, как сделать кнопку Поделиться тут - https://core.telegram.org/widgets/share.
+Флаг должен присылаться с локального сервера. Для этого нужно написать простой сервер, который по http-запросу на /api/feature-flags отдаст объект с флагом { isTelegramShareEnabled: true }.
+Флаг положить в react context, забрать из контекста в необходимом месте приложения и включить фичу.
+_______________________________________________________________________________________________________________________
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Что забывали сделать (недочеты). Проверьте, чтобы у вас такого не было перед сдачей
+* Нет кнопки удаления из избранного.
+* Авторизация слетает после перезагрузки.
+* Удаление из избранного визуально удаляется только если перезагрузить страницу. По ощущениям, приложение работает с паузами и нет явной обратной связи для пользователя в такие моменты.
+* История сохраняет карточки, а не ссылки. По карточке перейти нельзя. Из Избранного по карточке перейти нельзя.
+* Переход из истории не отображает результаты. Избранное не привязано к пользователю, появляется на втором аккаунте.
+* Руты не с гардами. 1 аккаунт для авторизации. История карточками, а не ссылками. Перезагрузка на карточке сбрасывает данные (id не зашит в урл). -->
