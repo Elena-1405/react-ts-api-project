@@ -7,6 +7,8 @@ import { SignIn } from './components/pages/signIn/signIn';
 import { Main } from './components/main/main';
 import { SignUp } from './components/pages/signUp/signUp';
 import { NotFound } from './components/pages/notFoundPage/notFound';
+import { Search } from './components/search/search';
+import { RoutePaths } from './shared/routePaths';
 
 function App() {
   return (
@@ -14,12 +16,12 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/main" element={<Main />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-
-        <Route path="*" element={<NotFound />} />
+        <Route path={RoutePaths.HOME} element={<Home />} />
+        <Route path={RoutePaths.MAIN} element={<Main />} />
+        <Route path={RoutePaths.SIGNIN} element={<SignIn />} />
+        <Route path={RoutePaths.SIGNUP} element={<SignUp />} />
+        <Route path={RoutePaths.SEARCH} element={<Search />} />
+        <Route path={RoutePaths.NOTFOUND} element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
