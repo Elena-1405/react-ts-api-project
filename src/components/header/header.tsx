@@ -1,9 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { useAuth } from '../../hooks/useAuth';
 import { removeUser } from '../../store/slices/userSlice';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { RoutePaths } from '../../shared/routePaths';
 import css from './header.module.css';
 
@@ -11,6 +10,10 @@ export function Header() {
   const dispatch = useAppDispatch();
 
   const { isAuth, email } = useAuth();
+
+  const handleRemove = () => {
+    dispatch(removeUser());
+  };
 
   return (
     <header className={css.header}>
@@ -29,7 +32,7 @@ export function Header() {
         </div>
       ) : (
         <Link to={RoutePaths.HOME}>
-          <button className={css.button} onClick={() => dispatch(removeUser())}>
+          <button className={css.button} onClick={handleRemove}>
             ВЫЙТИ
           </button>
         </Link>
