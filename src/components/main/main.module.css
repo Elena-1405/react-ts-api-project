@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+}
+
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.txt{
+    position: absolute;
+        top: calc(15% + 50px);
+        /* Регулируйте смещение вниз, чтобы поместить текст ниже поля поиска */
+        left: 50%;
+        transform: translateX(-50%);
+}

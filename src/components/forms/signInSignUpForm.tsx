@@ -1,32 +1,53 @@
 import React from 'react';
-import { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import css from './signInSignUpForm.module.css';
 
 interface FormProps {
+  name: string;
   title: string;
   handleClick: (email: string, password: string) => void;
 }
-export const Form: React.FC<FormProps> = ({ title, handleClick }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleSetEmail = (e: React.SyntheticEvent<HTMLInputElement>) => {
-    setEmail((e.target as HTMLInputElement).value);
-  };
+type FormData = {
+  email: string;
+  password: string;
+};
 
-  const handleSetPassword = (e: React.SyntheticEvent<HTMLInputElement>) => {
-    setPassword((e.target as HTMLInputElement).value);
-  };
+export const Form: React.FC<FormProps> = ({ name, title, handleClick }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
 
-  const handleSubmit = () => {
-    handleClick(email, password);
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    handleClick(data.email, data.password);
   };
 
   return (
-    <div>
-      <h1>Пожалуйста, введите почту и пароль</h1>
-      <input type="email" placeholder="email" value={email} onChange={handleSetEmail} />
-      <input type="password" placeholder="Password" value={password} onChange={handleSetPassword} />
-      <button onClick={handleSubmit}>{title}</button>
+    <div className={css.formContainer}>
+      <h1>Для {name} введите почту и пароль</h1>
+      <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+        <input
+          type="email"
+          placeholder="email"
+          {...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })}
+        />
+        {errors.email && <span className={css.info}>Введите корректный email</span>}
+
+        <input
+          type="password"
+          placeholder="Password"
+          {...register('password', { required: true, minLength: 6 })}
+        />
+        {errors.password && (
+          <span className={css.info}>Пароль должен содержать не менее 6 символов</span>
+        )}
+
+        <button className={css.submit} type="submit">
+          {title}
+        </button>
+      </form>
     </div>
   );
 };

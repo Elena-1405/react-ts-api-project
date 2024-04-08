@@ -1,0 +1,49 @@
+
+.formContainer {
+    position: relative;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.info {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: red;
+    font-size: 12px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #0056b3;
+}
+
+@media screen and (max-width: 1100px) {
+    .formContainer {
+        grid-template-columns: [start] 1fr 1fr [end];
+    }
+
+    .title {
+        justify-self: normal;
+}
+
+@media screen and (max-width: 640px) {
+    .formContainer {
+        grid-template-columns: [start] 1fr [end];
+    }
+}
+}

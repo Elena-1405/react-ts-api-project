@@ -1,26 +1,24 @@
 import React from 'react';
-import { useAppDispatch } from '../../hooks/reduxHooks';
 import { useAuth } from '../../hooks/useAuth';
-import { removeUser } from '../../store/slices/userSlice';
 import { Link } from 'react-router-dom';
-import { RoutePaths } from '../../shared/routePaths';
+import { RoutePaths } from '../../consts/consts';
 import css from './header.module.css';
 
 export function Header() {
-  const dispatch = useAppDispatch();
+  const { isAuth, userEmail, handleLogout } = useAuth();
 
-  const { isAuth, email } = useAuth();
-
-  const handleRemove = () => {
-    dispatch(removeUser());
+  const handleClick = () => {
+    handleLogout();
   };
 
   return (
     <header className={css.header}>
       <div className={css.logo}>
-        <img src={RoutePaths.HOME} alt="logo" />
+        <Link to={RoutePaths.HOME}>
+          <img src="/" alt="logo" />
+        </Link>
       </div>
-      {isAuth && <div className={css.email}>{email}</div>}
+      {isAuth && <div className={css.email}>{userEmail}</div>}
       {!isAuth ? (
         <div className={css.buttons}>
           <Link to={RoutePaths.SIGNIN}>
@@ -32,7 +30,7 @@ export function Header() {
         </div>
       ) : (
         <Link to={RoutePaths.HOME}>
-          <button className={css.button} onClick={handleRemove}>
+          <button className={`${css.exitbutton} ${css.button}`} onClick={handleClick}>
             ВЫЙТИ
           </button>
         </Link>
