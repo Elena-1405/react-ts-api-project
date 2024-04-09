@@ -29,3 +29,8 @@ export const BASE_URL = `https://moviesdatabase.p.rapidapi.com/titles/`;
 export const MOVIE_URL = `${BASE_URL}{id}`;
 export const apiHost = 'moviesdatabase.p.rapidapi.com';
 export const keyAxiosHeader = process.env.REACT_APP_API_KEY_AXIOS_HEADER;
+
+export const emailValidation = {
+  required: true,
+  pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+};

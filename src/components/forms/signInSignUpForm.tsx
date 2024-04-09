@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { emailValidation } from '../../consts/consts';
 import css from './signInSignUpForm.module.css';
 
 interface FormProps {
@@ -28,13 +29,8 @@ export const Form: React.FC<FormProps> = ({ name, title, handleClick }) => {
     <div className={css.formContainer}>
       <h1>Для {name} введите почту и пароль</h1>
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type="email"
-          placeholder="email"
-          {...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })}
-        />
+        <input type="email" placeholder="email" {...register('email', emailValidation)} />
         {errors.email && <span className={css.info}>Введите корректный email</span>}
-
         <input
           type="password"
           placeholder="Password"
@@ -43,7 +39,6 @@ export const Form: React.FC<FormProps> = ({ name, title, handleClick }) => {
         {errors.password && (
           <span className={css.info}>Пароль должен содержать не менее 6 символов</span>
         )}
-
         <button className={css.submit} type="submit">
           {title}
         </button>
