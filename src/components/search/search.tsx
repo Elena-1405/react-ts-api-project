@@ -6,7 +6,7 @@ import clear from '../../shared/clear.svg';
 export const Search = () => {
   return (
     <div className={css.search}>
-      <img className={css.icon} src={search} alt="search" />
+      <img className={css.searchIcon} src={search} alt="search" />
       <input className={css.input} placeholder="Поиск" />
 
       <img className={css.clearIcon} src={clear} alt="clear" />
