@@ -1,40 +1,23 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../../hooks/reduxHooks';
-import { setUser } from '../../../store/slices/userSlice';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { NotFound } from '../notFoundPage/notFound';
+import React, { useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../../hooks/useAuth';
 import { Form } from '../../forms/signInSignUpForm';
-import { RoutePaths } from '../../../shared/routePaths';
+import { RoutePaths } from '../../../consts/consts';
 import css from './signUp.module.css';
 
 export function SignUp() {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const { handleRegister } = useAuth();
 
-  const handleRegister = (email: string, password: string) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        console.log(user);
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.refreshToken,
-          })
-        );
-        navigate('/main');
-      })
-      .catch((error) => {
-        console.error('Произошла ошибка', error);
-        return <NotFound />;
-      });
-  };
+  const handleClick = useCallback(
+    (email: string, password: string) => {
+      handleRegister(email, password);
+    },
+    [handleRegister]
+  );
 
   return (
-    <div className={css.signin}>
-      <Form title="РЕГИСТРАЦИЯ" handleClick={handleRegister} />
+    <div className={css.signup}>
+      <Form name="регистрации" title="РЕГИСТРАЦИЯ" handleClick={handleClick} />
       <span>
         <Link to={RoutePaths.SIGNIN}>Уже есть аккаунт</Link>
       </span>
