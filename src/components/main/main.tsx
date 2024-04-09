@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { Search } from '../search/search';
 import { MoviesList } from '../moviesList/moviesList';
 import { RoutePaths } from '../../consts/consts';
+import { useAuth } from '../../hooks/useAuth';
 import css from './main.module.css';
 
 export function Main() {
-  const isAuth = true;
+  const { isAuth } = useAuth();
   return (
     <>
       {isAuth ? (
@@ -22,9 +23,13 @@ export function Main() {
           </Suspense>
         </div>
       ) : (
-        <span>
+        <span className={css.txt}>
           <Link to={RoutePaths.SIGNUP}>
             <h3>Зарегистрируйтесь,</h3>{' '}
+          </Link>
+          или
+          <Link to={RoutePaths.SIGNIN}>
+            <h3>войдите,</h3>{' '}
           </Link>
           <h3>чтобы продолжить</h3>
         </span>

@@ -6,8 +6,6 @@ import { RoutePaths } from '../../consts/consts';
 import { Link } from 'react-router-dom';
 
 export const MoviesList = () => {
-  const isAuth = true;
-
   const [moviesData, setMoviesData] = useState<MovieItem[]>([]);
 
   //Запрос с API
@@ -31,25 +29,14 @@ export const MoviesList = () => {
   // }, []);
 
   return (
-    <>
-      {isAuth ? (
-        <div>
-          {Array.isArray(moviesData) &&
-            moviesData.length > 0 &&
-            moviesData.map((movie) => (
-              <div key={movie.id}>
-                <Link to={`/moviecard/${movie.id}`}>{movie.titleText?.text}</Link>
-              </div>
-            ))}
-        </div>
-      ) : (
-        <span>
-          <Link to={RoutePaths.SIGNUP}>
-            <h3>Зарегистрируйтесь,</h3>{' '}
-          </Link>
-          <h3>чтобы продолжить</h3>
-        </span>
-      )}
-    </>
+    <div>
+      {Array.isArray(moviesData) &&
+        moviesData.length > 0 &&
+        moviesData.map((movie) => (
+          <div key={movie.id}>
+            <Link to={`/moviecard/${movie.id}`}>{movie.titleText?.text}</Link>
+          </div>
+        ))}
+    </div>
   );
 };
