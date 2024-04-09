@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { movieList, moviesListParams } from './consts';
+import { moviesListParams } from '../../consts/axios';
 import { MovieItem } from '../../types/types';
+import { RoutePaths } from '../../consts/consts';
 import { Link } from 'react-router-dom';
 
 export const MoviesList = () => {
   const isAuth = true;
 
-  // Запрос списка фильмов, на всякий случай если откажет АПИ
   const [moviesData, setMoviesData] = useState<MovieItem[]>([]);
 
   //Запрос с API
@@ -16,7 +16,6 @@ export const MoviesList = () => {
       try {
         const response = await axios.request(moviesListParams);
         setMoviesData(response.data.results);
-        console.log(response.data.results);
       } catch (error) {
         console.error(error);
       }
@@ -44,7 +43,12 @@ export const MoviesList = () => {
             ))}
         </div>
       ) : (
-        <div>Login or go home</div>
+        <span>
+          <Link to={RoutePaths.SIGNUP}>
+            <h3>Зарегистрируйтесь,</h3>{' '}
+          </Link>
+          <h3>чтобы продолжить</h3>
+        </span>
       )}
     </>
   );

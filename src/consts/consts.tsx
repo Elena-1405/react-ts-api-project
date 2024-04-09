@@ -24,3 +24,8 @@ export const ACTION_TYPE = {
   SET_USER: 'user/setUser',
   DELETE_USER: 'user/removeUser',
 };
+
+export const BASE_URL = `https://moviesdatabase.p.rapidapi.com/titles/`;
+export const MOVIE_URL = `${BASE_URL}{id}`;
+export const apiHost = 'moviesdatabase.p.rapidapi.com';
+export const keyAxiosHeader = process.env.REACT_APP_API_KEY_AXIOS_HEADER;

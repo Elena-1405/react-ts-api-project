@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../hooks/useAuth';
 import { Form } from '../../forms/signInSignUpForm';
@@ -8,9 +8,12 @@ import css from './signIn.module.css';
 export const SignIn: React.FC = () => {
   const { handleLogin } = useAuth();
 
-  const handleClick = (email: string, password: string) => {
-    handleLogin(email, password);
-  };
+  const handleClick = useCallback(
+    (email: string, password: string) => {
+      handleLogin(email, password);
+    },
+    [handleLogin]
+  );
 
   return (
     <div className={css.signin}>

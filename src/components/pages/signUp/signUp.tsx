@@ -1,8 +1,5 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../../hooks/reduxHooks';
-import { setUser } from '../../../store/slices/userSlice';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../../hooks/useAuth';
 import { Form } from '../../forms/signInSignUpForm';
 import { RoutePaths } from '../../../consts/consts';
@@ -11,9 +8,12 @@ import css from './signUp.module.css';
 export function SignUp() {
   const { handleRegister } = useAuth();
 
-  const handleClick = (email: string, password: string) => {
-    handleRegister(email, password);
-  };
+  const handleClick = useCallback(
+    (email: string, password: string) => {
+      handleRegister(email, password);
+    },
+    [handleRegister]
+  );
 
   return (
     <div className={css.signup}>

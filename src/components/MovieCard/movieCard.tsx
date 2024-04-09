@@ -1,34 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import { moviesList, movieById, mockMovie } from './movieConsts';
+import { BASE_URL, apiHost } from '../../consts/consts';
 import { MovieItem } from '../../types/types';
 import { useParams, useNavigate } from 'react-router-dom';
-import { mockMovie } from './movieConsts';
+import { RoutePaths } from '../../consts/consts';
+import { Link } from 'react-router-dom';
 import css from './movieCard.module.css';
 
 export const MovieCard = () => {
   const isAuth = true;
   const { id } = useParams();
-  //const id = params.id || 'tt0000103';
   const navigate = useNavigate();
 
   const [movieItem, setMovieItem] = useState<MovieItem>({});
+  const apiUrl = `${BASE_URL}${id}`;
+  const xRapidAPIKey = process.env.REACT_APP_API_KEY;
 
-  // Чтобы не дергать каждый раз API, так как у нас ограничено кол-во запросов
-  // useEffect(() => {
-  //   setMovieItem(mockMovie);
-  // }, []);
-
-  //Запрос с API, так же надо менять и в movieList
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.request({
           method: 'GET',
-          url: `https://moviesdatabase.p.rapidapi.com/titles/${id}`,
+          url: apiUrl,
           headers: {
-            'X-RapidAPI-Key': '25f11966f0mshc3667469a80739fp1d7c41jsn0905e1b722a9',
-            'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
+            'X-RapidAPI-Key': xRapidAPIKey,
+            'X-RapidAPI-Host': apiHost,
           },
         });
         setMovieItem(response.data.results);
@@ -83,9 +79,12 @@ export const MovieCard = () => {
           )}
         </div>
       ) : (
-        <div>
-          <h4>Login or go home</h4>
-        </div>
+        <span>
+          <Link to={RoutePaths.SIGNUP}>
+            <h3>Зарегистрируйтесь</h3>{' '}
+          </Link>
+          <h3>,чтобы продолжить</h3>
+        </span>
       )}
     </>
   );

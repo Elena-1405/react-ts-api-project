@@ -1,16 +1,19 @@
 .card {
-    width: 300px;
+    width: 700px;
+    height: 550px;
     position: absolute;
     left: 50%;
     top: 30%;
     transform: translate(-50%, -20%);
     margin-top: 10px;
+    overflow-y: auto;
+        max-height: 600px;
 }
 
 .info{
     display:block;
     position: absolute;
-        left: 50%;
-        top: 30%;
-        transform: translate(-50%, -20%);
+        left: 58%;
+        transform: translate(-50%);
+        
 }

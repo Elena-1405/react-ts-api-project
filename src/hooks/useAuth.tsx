@@ -49,7 +49,6 @@ export const AuthProvider: React.FC<FavoritesProviderProps> = ({ children }) => 
     const auth = getAuth();
     signInWithEmailAndPassword(auth, userEmail, password)
       .then(({ user }) => {
-        console.log(user);
         dispatch(
           setUser({
             userEmail: user.email,
@@ -80,7 +79,6 @@ export const AuthProvider: React.FC<FavoritesProviderProps> = ({ children }) => 
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, userEmail, password)
       .then(({ user }) => {
-        console.log(user);
         dispatch(
           setUser({
             userEmail: user.email,

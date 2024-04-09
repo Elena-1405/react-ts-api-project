@@ -9,7 +9,7 @@ import { Main } from './components/main/main';
 import { SignUp } from './components/pages/signUp/signUp';
 import { NotFound } from './components/pages/notFoundPage/notFound';
 import { Search } from './components/search/search';
-import { MovieCard } from '../src/components/MovieCard/movieCard';
+import { MovieCard } from './components/movieCard/movieCard';
 import { RoutePaths } from './consts/consts';
 import { ErrorFallback } from './components/pages/errorPage/errorFallback';
 
