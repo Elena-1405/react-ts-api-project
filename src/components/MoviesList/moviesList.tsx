@@ -6,8 +6,6 @@ import { RoutePaths } from '../../consts/consts';
 import { Link } from 'react-router-dom';
 
 export const MoviesList = () => {
-  const isAuth = true;
-
   const [moviesData, setMoviesData] = useState<MovieItem[]>([]);
 
   //Запрос с API
@@ -51,5 +49,7 @@ export const MoviesList = () => {
         </span>
       )}
     </>
+
+
   );
 };
