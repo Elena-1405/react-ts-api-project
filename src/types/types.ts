@@ -42,3 +42,12 @@ export interface MovieItem {
   releaseYear?: ReleaseDates | null;
   releaseDate?: ReleaseDates | null;
 }
+
+export interface FavoriteMovie {
+  id: string;
+  title: string;
+  releaseyear: string;
+  director: string;
+  rating: number;
+  plot: string;
+}

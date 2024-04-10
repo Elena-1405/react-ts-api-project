@@ -10,6 +10,7 @@ import { SignUp } from './components/pages/signUp/signUp';
 import { NotFound } from './components/pages/notFoundPage/notFound';
 import { Search } from './components/search/search';
 import { MovieCard } from './components/movieCard/movieCard';
+import { FavoritesList } from './components/favoritesList/favoritesList';
 import { RoutePaths } from './consts/consts';
 import { ErrorFallback } from './components/pages/errorPage/errorFallback';
 
@@ -40,10 +41,18 @@ function App() {
           }
         />
         <Route
-          path={RoutePaths.MOVIECARD}
+          path={`${RoutePaths.MOVIECARD}/:id`}
           element={
             <ErrorBoundary fallback={<ErrorFallback />}>
               <MovieCard />
+            </ErrorBoundary>
+          }
+        />
+        <Route
+          path={RoutePaths.FAVORITES}
+          element={
+            <ErrorBoundary fallback={<ErrorFallback />}>
+              <FavoritesList />
             </ErrorBoundary>
           }
         />

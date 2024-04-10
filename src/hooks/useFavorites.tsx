@@ -1,21 +1,13 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { MovieItem } from '../types/types';
 
 interface FavoritesProviderProps {
   children: ReactNode;
 }
 
-interface FavoriteMovie {
-  id: string;
-  title: string;
-  releaseyear: string;
-  director: string;
-  rating: number;
-  plot: string;
-}
-
 interface FavoritesContextType {
-  favorites: FavoriteMovie[];
-  addToFavorites: (movie: FavoriteMovie) => void;
+  favorites: MovieItem[];
+  addToFavorites: (movie: MovieItem) => void;
   removeFromFavorites: (movieId: string) => void;
 }
 
@@ -34,7 +26,7 @@ export const useFavorites = () => {
 };
 
 export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }) => {
-  const [favorites, setFavorites] = useState<FavoriteMovie[]>([]);
+  const [favorites, setFavorites] = useState<MovieItem[]>([]);
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem('favorites');
@@ -47,7 +39,7 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  function addToFavorites(movie: FavoriteMovie) {
+  function addToFavorites(movie: MovieItem) {
     setFavorites((prevFavorites) => [...prevFavorites, movie]);
   }
 

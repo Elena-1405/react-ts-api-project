@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store/index';
 import './firebase';
-import { FavoritesProvider } from './favorites/favorites';
+import { FavoritesProvider } from './hooks/useFavorites';
 import { AuthProvider } from '../src/hooks/useAuth';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);

@@ -5,6 +5,7 @@ import { MoviesList } from '../moviesList/moviesList';
 import { RoutePaths } from '../../consts/consts';
 import { useAuth } from '../../hooks/useAuth';
 import css from './main.module.css';
+import styles from '../../consts/cssConsts.module.css';
 
 export function Main() {
   const { isAuth } = useAuth();
@@ -24,11 +25,19 @@ export function Main() {
         </div>
       ) : (
         <span className={css.txt}>
+
+          <Link to={RoutePaths.SIGNUP} className={styles.link}>
+            <h3>Зарегистрируйтесь,</h3>{' '}
+          </Link>
+          или
+          <Link to={RoutePaths.SIGNIN} className={styles.link}>
+
           <Link to={RoutePaths.SIGNUP}>
             <h3>Зарегистрируйтесь,</h3>{' '}
           </Link>
           или
           <Link to={RoutePaths.SIGNIN}>
+
             <h3>войдите,</h3>{' '}
           </Link>
           <h3>чтобы продолжить</h3>

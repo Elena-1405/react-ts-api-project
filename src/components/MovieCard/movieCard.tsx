@@ -1,20 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BASE_URL, apiHost } from '../../consts/consts';
+import { Link } from 'react-router-dom';
+import { BASE_URL, apiHost, APIKey } from '../../consts/consts';
 import { MovieItem } from '../../types/types';
 import { useParams, useNavigate } from 'react-router-dom';
 import { RoutePaths } from '../../consts/consts';
-import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { useFavorites } from '../../hooks/useFavorites';
 import css from './movieCard.module.css';
 
-export const MovieCard = () => {
-  const isAuth = true;
+export const MovieCard: React.FC = () => {
+  const { isAuth } = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [movieItem, setMovieItem] = useState<MovieItem>({});
   const apiUrl = `${BASE_URL}${id}`;
-  const xRapidAPIKey = process.env.REACT_APP_API_KEY;
+  const xRapidAPIKey = APIKey;
+
+  const { addToFavorites, favorites, removeFromFavorites } = useFavorites();
+
+  const isFavorite = Boolean(favorites.find((favMovie) => favMovie.id === movieItem.id));
+
+  const handleToggleFavorite = () => {
+    if (isFavorite && movieItem && movieItem.id) {
+      removeFromFavorites(movieItem.id);
+    } else {
+      addToFavorites(movieItem);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,7 +84,9 @@ export const MovieCard = () => {
               {movieItem.releaseYear && <p>Release Year: {movieItem.releaseYear?.year}</p>}
               {movieItem.releaseDate?.day && <p>Release Date: {movieItem.releaseDate?.day}</p>}
               <div className={css.buttons}>
-                <button className={css.favoriteButton}>В избранное</button>
+                <button type="button" onClick={handleToggleFavorite} className={css.favoriteButton}>
+                  {isFavorite ? 'Удалить' : 'В избранное'}
+                </button>
                 <button className={css.backButton} onClick={handleGoBack}>
                   К списку
                 </button>
@@ -79,11 +95,15 @@ export const MovieCard = () => {
           )}
         </div>
       ) : (
-        <span>
+        <span className={css.txt}>
           <Link to={RoutePaths.SIGNUP}>
-            <h3>Зарегистрируйтесь</h3>{' '}
+            <h3>Зарегистрируйтесь,</h3>{' '}
           </Link>
-          <h3>,чтобы продолжить</h3>
+          или
+          <Link to={RoutePaths.SIGNIN}>
+            <h3>войдите,</h3>{' '}
+          </Link>
+          <h3>чтобы продолжить</h3>
         </span>
       )}
     </>
