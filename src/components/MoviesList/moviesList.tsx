@@ -38,7 +38,7 @@ export const MoviesList = () => {
             moviesData.length > 0 &&
             moviesData.map((movie) => (
               <div key={movie.id}>
-                <Link to={`/moviecard/${movie.id}`}>{movie.titleText?.text}</Link>
+                <Link to={`${RoutePaths.MOVIECARD}/${movie.id}`}>{movie.titleText?.text}</Link>
               </div>
             ))}
         </div>

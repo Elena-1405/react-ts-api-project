@@ -41,7 +41,7 @@ function App() {
           }
         />
         <Route
-          path={RoutePaths.MOVIECARD}
+          path={`${RoutePaths.MOVIECARD}/:id`}
           element={
             <ErrorBoundary fallback={<ErrorFallback />}>
               <MovieCard />

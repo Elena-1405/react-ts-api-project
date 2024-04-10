@@ -4,7 +4,7 @@ export enum RoutePaths {
   SIGNIN = '/signin',
   SIGNUP = '/signup',
   SEARCH = '/search',
-  MOVIECARD = '/moviecard/:id',
+  MOVIECARD = '/moviecard',
   FAVORITES = '/favorites',
   NOTFOUND = '*',
 }
@@ -30,6 +30,7 @@ export const BASE_URL = `https://moviesdatabase.p.rapidapi.com/titles/`;
 export const MOVIE_URL = `${BASE_URL}{id}`;
 export const apiHost = 'moviesdatabase.p.rapidapi.com';
 export const keyAxiosHeader = process.env.REACT_APP_API_KEY_AXIOS_HEADER;
+export const APIKey = process.env.REACT_APP_API_KEY;
 
 export const emailValidation = {
   required: true,

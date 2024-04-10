@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { BASE_URL, apiHost } from '../../consts/consts';
+import { BASE_URL, apiHost, APIKey } from '../../consts/consts';
 import { MovieItem } from '../../types/types';
 import { useParams, useNavigate } from 'react-router-dom';
 import { RoutePaths } from '../../consts/consts';
 import { useAuth } from '../../hooks/useAuth';
 import { useFavorites } from '../../hooks/useFavorites';
 import css from './movieCard.module.css';
-
-// interface Props {
-//   movie: FavoriteMovie;
-// }
 
 export const MovieCard: React.FC = () => {
   const { isAuth } = useAuth();
@@ -20,22 +16,20 @@ export const MovieCard: React.FC = () => {
 
   const [movieItem, setMovieItem] = useState<MovieItem>({});
   const apiUrl = `${BASE_URL}${id}`;
-  const xRapidAPIKey = process.env.REACT_APP_API_KEY;
+  const xRapidAPIKey = APIKey;
 
   const { addToFavorites, favorites, removeFromFavorites } = useFavorites();
 
   const isFavorite = Boolean(favorites.find((favMovie) => favMovie.id === movieItem.id));
 
   const handleToggleFavorite = () => {
-    console.log('toggle');
     if (isFavorite && movieItem && movieItem.id) {
       removeFromFavorites(movieItem.id);
     } else {
-      console.log('else');
       addToFavorites(movieItem);
     }
   };
-  console.log('movieCard');
+
   useEffect(() => {
     const fetchData = async () => {
       try {

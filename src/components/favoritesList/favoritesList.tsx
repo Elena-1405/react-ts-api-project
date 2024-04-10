@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { useFavorites } from '../../hooks/useFavorites';
-import { Link } from 'react-router-dom';
+import { RoutePaths } from '../../consts/consts';
 
 export function FavoritesList() {
   const { isAuth } = useAuth();
@@ -15,7 +16,7 @@ export function FavoritesList() {
         isAuth && (
           <ul>
             {favorites.map((movie) => (
-              <Link key={movie.id} to={`/moviecard/${movie.id}`}>
+              <Link key={movie.id} to={`${RoutePaths.MOVIECARD}/${movie.id}`}>
                 <li>{movie.titleText?.text}</li>
               </Link>
             ))}
