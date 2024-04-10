@@ -25,19 +25,16 @@ export function Main() {
         </div>
       ) : (
         <span className={css.txt}>
-
           <Link to={RoutePaths.SIGNUP} className={styles.link}>
             <h3>Зарегистрируйтесь,</h3>{' '}
           </Link>
           или
-          <Link to={RoutePaths.SIGNIN} className={styles.link}>
-
+          <Link to={RoutePaths.SIGNIN} className={styles.link}></Link>
           <Link to={RoutePaths.SIGNUP}>
             <h3>Зарегистрируйтесь,</h3>{' '}
           </Link>
           или
           <Link to={RoutePaths.SIGNIN}>
-
             <h3>войдите,</h3>{' '}
           </Link>
           <h3>чтобы продолжить</h3>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useAuth } from '../../hooks/useAuth';
 import { moviesListParams } from '../../consts/axios';
 import { MovieItem } from '../../types/types';
 import { RoutePaths } from '../../consts/consts';
@@ -7,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 export const MoviesList = () => {
   const [moviesData, setMoviesData] = useState<MovieItem[]>([]);
+  const isAuth = useAuth();
 
   //Запрос с API
   useEffect(() => {
@@ -49,7 +51,5 @@ export const MoviesList = () => {
         </span>
       )}
     </>
-
-
   );
 };
