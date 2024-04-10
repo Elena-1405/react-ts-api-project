@@ -5,6 +5,7 @@ export enum RoutePaths {
   SIGNUP = '/signup',
   SEARCH = '/search',
   MOVIECARD = '/moviecard/:id',
+  FAVORITES = '/favorites',
   NOTFOUND = '*',
 }
 

@@ -1,0 +1,11 @@
+
+Link {
+    text-decoration: none;
+    color: rgb(58, 120, 99);
+    cursor: pointer;
+}
+
+Link:hover {
+    color: black;
+}
+
