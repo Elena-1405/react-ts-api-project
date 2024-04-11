@@ -1,6 +1,19 @@
-.info{
-    display:flex;
+
+.info {
+    display: flex;
     align-items: center;
-    width: 440px;
+    width: 430px;
     height: 80px;
+}
+
+@media screen and (max-width: 768px) {
+    .info {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .info {
+        width: 250px;
+    }
 }

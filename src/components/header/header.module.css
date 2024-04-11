@@ -31,7 +31,19 @@
     margin-right: 0px;
 }
 
-.fav{
-    display:flex;
+.fav {
+    display: flex;
     margin-right: 35px;
+}
+
+@media screen and (max-width: 768px) {
+    .fav {
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .fav {
+        margin-right: 10px;
+    }
 }

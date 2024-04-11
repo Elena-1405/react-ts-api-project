@@ -14,11 +14,24 @@ body {
         max-height: 400px;
 }
 
-.txt{
+.txt {
     position: absolute;
     width: 90%;
-        top: calc(15% + 50px);
-        left: 50%;
-        transform: translateX(-50%);overflow-y: auto;
-            max-height: 420px;
+    top: calc(15% + 50px);
+    left: 50%;
+    transform: translateX(-50%);
+    overflow-y: auto;
+    max-height: 420px;
+}
+
+@media screen and (max-width: 768px) {
+    .txt {
+        width: 80%; 
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .txt {
+        width: 70%;
+    }
 }
