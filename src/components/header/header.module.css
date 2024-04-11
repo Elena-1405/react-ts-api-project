@@ -36,6 +36,30 @@
     margin-right: 35px;
 }
 
+@media screen and (max-width: 320px) {
+    .header {
+        padding: 5px 0;
+    }
+
+    .email {
+        margin-top: 1px;
+    }
+
+    .button {
+        padding: 3px 5px;
+        margin-left: 3px;
+    }
+
+    .logo {
+        margin-left: 10px;
+
+    }
+
+    .fav {
+        margin-right: 10px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .fav {
         margin-right: 20px;
