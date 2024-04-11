@@ -2,7 +2,7 @@ import React from 'react';
 import css from './search.module.css';
 import search from '../../shared/search.svg';
 import clear from '../../shared/clear.svg';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import MovieDataBase from './searchByKeyword';
 
 export const Search = () => {
