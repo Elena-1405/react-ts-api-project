@@ -3,7 +3,9 @@ import css from './search.module.css';
 import search from '../../shared/search.svg';
 import clear from '../../shared/clear.svg';
 import { useState } from 'react';
+import { RoutePaths } from '../../consts/consts';
 import MovieDataBase from './searchByKeyword';
+import { Link } from 'react-router-dom';
 
 export const Search = () => {
   const [inputValue, setInputValue] = useState<string>('');
@@ -42,13 +44,15 @@ export const Search = () => {
 
   return (
     <div className={css.search}>
-      <input
-        className={css.input}
-        value={inputValue}
-        onChange={handleInputChange}
-        onFocus={fan}
-        placeholder="Поиск"
-      />
+      <Link to={RoutePaths.SEARCH}>
+        <input
+          className={css.input}
+          value={inputValue}
+          onChange={handleInputChange}
+          onFocus={fan}
+          placeholder="Поиск"
+        />
+      </Link>
       <img className={css.searchIcon} src={search} onClick={btnSearch} alt="search" />
       <img className={css.clearIcon} src={clear} alt="clear" />
       {MovieDataBase(inputValue.trim().replace(/\s+/g, ' ').split(' ').join('%20'))}
