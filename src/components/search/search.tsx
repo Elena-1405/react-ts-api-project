@@ -13,6 +13,10 @@ export const Search = () => {
     setInputValue(event.target.value);
   };
 
+  const [focused, setFocused] = useState(false);
+  const onFocus = () => setFocused(true);
+  const onBlur = () => setFocused(false);
+
   let historySearch: Array<string> = [];
 
   async function btnSearch(): Promise<void> {
@@ -20,26 +24,27 @@ export const Search = () => {
     const historyExist = splitHistory.filter((searchTerm) => searchTerm === inputValue);
     if (historyExist.length === 0) {
       historySearch = splitHistory;
-
       historySearch.push(inputValue);
       localStorage.setItem('history', historySearch.toString());
     }
-
-    console.log(historySearch);
   }
-  function fan() {
-    if (historySearch?.length === 0) {
-      return <div></div>;
-    }
+  function searchHistory() {
     return (
       <div>
-        {historySearch?.map((elem) => (
-          <ul key={elem}>
-            <li>{elem}</li>
-          </ul>
-        ))}
+        <h1>Search History</h1>
+        <ul>
+          {localStorage
+            .getItem('history')
+            ?.split(',')
+            ?.map((elem: string) => (
+              <li key={elem}>{elem}</li>
+            ))}
+        </ul>
       </div>
     );
+  }
+  function searchClear() {
+    setInputValue('');
   }
 
   return (
@@ -49,13 +54,15 @@ export const Search = () => {
           className={css.input}
           value={inputValue}
           onChange={handleInputChange}
-          onFocus={fan}
+          onFocus={onFocus}
+          onBlur={onBlur}
           placeholder="Поиск"
         />
       </Link>
       <img className={css.searchIcon} src={search} onClick={btnSearch} alt="search" />
-      <img className={css.clearIcon} src={clear} alt="clear" />
+      <img className={css.clearIcon} src={clear} onClick={searchClear} alt="clear" />
       {MovieDataBase(inputValue.trim().replace(/\s+/g, ' ').split(' ').join('%20'))}
+      {focused ? searchHistory() : ''}
     </div>
   );
 };
