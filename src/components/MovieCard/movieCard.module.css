@@ -3,11 +3,11 @@
     height: 550px;
     position: absolute;
     left: 50%;
-    top: 30%;
+    top:29%;
     transform: translate(-50%, -20%);
     margin-top: 10px;
     overflow-y: auto;
-        max-height: 600px;
+        max-height: 560px;
 }
 
 .info{

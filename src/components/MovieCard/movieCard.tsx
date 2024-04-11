@@ -9,7 +9,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { useFavorites } from '../../hooks/useFavorites';
 import css from './movieCard.module.css';
 
-export const MovieCard: React.FC = () => {
+const MovieCard: React.FC = () => {
   const { isAuth } = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ export const MovieCard: React.FC = () => {
                   height={isVerticalImage ? 300 : 225}
                 />
               )}
-              <h2>Информация</h2>
+              <h3>Информация</h3>
               {movieItem.titleText && <p>Название: {movieItem.titleText?.text}</p>}
               {movieItem.originalTitleText && (
                 <p>Название на языке оригиналa: {movieItem.originalTitleText?.text}</p>
@@ -85,10 +85,10 @@ export const MovieCard: React.FC = () => {
               {movieItem.releaseDate?.day && <p>Release Date: {movieItem.releaseDate?.day}</p>}
               <div className={css.buttons}>
                 <button type="button" onClick={handleToggleFavorite} className={css.favoriteButton}>
-                  {isFavorite ? 'Удалить' : 'В избранное'}
+                  {isFavorite ? 'Из избранного' : 'В избранное'}
                 </button>
-                <button className={css.backButton} onClick={handleGoBack}>
-                  К списку
+                <button type="button" className={css.backButton} onClick={handleGoBack}>
+                  Обратно к списку
                 </button>
               </div>
             </div>
@@ -109,3 +109,5 @@ export const MovieCard: React.FC = () => {
     </>
   );
 };
+
+export default MovieCard;

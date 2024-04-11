@@ -10,12 +10,7 @@
 }
 
 .email{
-     margin: 0 auto;
-}
-
-.buttons {
-    margin-top: 5px;
-    margin-right: 35px;
+     margin-top: 4px;
 }
 
 .button {
@@ -34,4 +29,9 @@
 
 .exitbutton {
     margin-right: 0px;
+}
+
+.fav{
+    display:flex;
+    margin-right: 35px;
 }

@@ -10,7 +10,7 @@ export function ErrorFallback() {
   };
   return (
     <div className={css.ErrorFallback}>
-      <p className={css.ErrorFallback}>Похоже, что-то пошло не так...</p>
+      <h3>Похоже, что-то пошло не так...</h3>
 
       <button className="backPage" onClick={handleGoBack}>
         Обратно

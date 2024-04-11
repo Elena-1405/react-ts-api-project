@@ -7,7 +7,7 @@ import { useAuth } from '../../hooks/useAuth';
 import css from './main.module.css';
 import styles from '../../consts/cssConsts.module.css';
 
-export function Main() {
+export default function Main() {
   const { isAuth } = useAuth();
   return (
     <>

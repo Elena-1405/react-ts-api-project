@@ -10,11 +10,15 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
+    overflow-y: auto;
+        max-height: 400px;
 }
 
 .txt{
     position: absolute;
+    width: 90%;
         top: calc(15% + 50px);
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%);overflow-y: auto;
+            max-height: 420px;
 }

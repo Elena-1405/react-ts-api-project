@@ -1,0 +1,13 @@
+.movie{
+    display:block;
+}
+
+.list{
+    margin-left:50px;
+}
+
+.item {
+    display:flex;
+    align-items: center;
+    margin-bottom: 10px;
+}

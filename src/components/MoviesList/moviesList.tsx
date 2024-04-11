@@ -5,6 +5,7 @@ import { moviesListParams } from '../../consts/axios';
 import { MovieItem } from '../../types/types';
 import { RoutePaths } from '../../consts/consts';
 import { Link } from 'react-router-dom';
+import css from './moviesList.module.css';
 
 export const MoviesList = () => {
   const [moviesData, setMoviesData] = useState<MovieItem[]>([]);
@@ -37,8 +38,14 @@ export const MoviesList = () => {
           {Array.isArray(moviesData) &&
             moviesData.length > 0 &&
             moviesData.map((movie) => (
-              <div key={movie.id}>
-                <Link to={`${RoutePaths.MOVIECARD}/${movie.id}`}>{movie.titleText?.text}</Link>
+              <div key={movie.id} className={css.info}>
+                <Link to={`${RoutePaths.MOVIECARD}/${movie.id}`}>
+                  <p className={css.info}>
+                    <h4>Название:&nbsp;</h4>
+                    {movie.titleText?.text}&nbsp;&nbsp;<h4> Год:&nbsp;</h4>
+                    {movie.releaseYear?.year}
+                  </p>
+                </Link>
               </div>
             ))}
         </div>

@@ -27,8 +27,33 @@ button {
   padding: 5px 9px;
   border: 1px solid #07341e;
   border-radius: 3px;
-  
+  margin-left: 3px;
   background-color: rgb(183, 237, 219);
   color: rgb(33, 77, 62);
   cursor: pointer;
+}
+
+p {
+  font-size: 14px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Стилизация скроллбара в Chrome, Safari и Opera */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
