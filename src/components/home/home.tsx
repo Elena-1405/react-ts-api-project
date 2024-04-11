@@ -3,10 +3,10 @@ import css from './home.module.css';
 
 export function Home() {
   return (
-    <div className={css.main}>
+    <div className={css.home}>
       <Suspense fallback={<h3>Загрузка...</h3>}>
         <div className={css.txt}>
-          <h3>Добро пожаловать!</h3>
+          <h2>Добро пожаловать!</h2>
         </div>
       </Suspense>
     </div>

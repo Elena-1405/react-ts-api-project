@@ -1,13 +1,17 @@
 body {
     margin: 0;
+    margin:0;
+    height: 100%;
 }
 
 
 
-.main {
+.home {
     display: flex;
     justify-content: center;
     margin: 0;
     padding: 0;
-    height:100%;
+    height: calc(100vh - 80px);
+    box-sizing: border-box;
+    background-color:rgb(225, 248, 240) ;
 }

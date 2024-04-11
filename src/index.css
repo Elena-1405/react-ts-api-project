@@ -55,9 +55,9 @@ input:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: rgb(183, 237, 219)
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgb(33, 77, 62);
 }
