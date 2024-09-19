@@ -28,21 +28,7 @@ export const Search = () => {
       localStorage.setItem('history', historySearch.toString());
     }
   }
-  function searchHistory() {
-    return (
-      <div>
-        <h1>Search History</h1>
-        <ul>
-          {localStorage
-            .getItem('history')
-            ?.split(',')
-            ?.map((elem: string) => (
-              <li key={elem}>{elem}</li>
-            ))}
-        </ul>
-      </div>
-    );
-  }
+ 
   function searchClear() {
     setInputValue('');
   }
@@ -62,7 +48,7 @@ export const Search = () => {
       <img className={css.searchIcon} src={search} onClick={btnSearch} alt="search" />
       <img className={css.clearIcon} src={clear} onClick={searchClear} alt="clear" />
       {MovieDataBase(inputValue.trim().replace(/\s+/g, ' ').split(' ').join('%20'))}
-      {focused ? searchHistory() : ''}
+      
     </div>
   );
 };

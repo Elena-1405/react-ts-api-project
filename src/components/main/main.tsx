@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { Search } from '../search/search';
+//import { Search } from '../search/search'; in development
 import { MoviesList } from '../moviesList/moviesList';
 import { RoutePaths } from '../../consts/consts';
 import { useAuth } from '../../hooks/useAuth';
@@ -14,7 +14,6 @@ export default function Main() {
       {isAuth ? (
         <div>
           <Suspense fallback={<h3>Загрузка...</h3>}>
-            <Search />
             <div className={css.txt}>
               <h3>Для Вас:</h3>
               <div>

@@ -11,9 +11,9 @@ function getElement(moveCard: MoveCard): JSX.Element {
     return (
         <div>
             <figure style={{ textAlign: 'center', }}>
-                <div style={{width: '60px'}}>
+                <div style={{width: '30px'}}>
                 </div>
-                <img src={moveCard.primaryImage.url} width={100} alt="" />
+                <img src={moveCard.primaryImage.url} width={100} alt='image' />
                 <figcaption>{moveCard.originalTitleText.text}</figcaption>
             </figure>
         </div>
