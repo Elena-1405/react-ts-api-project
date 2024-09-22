@@ -1,16 +1,60 @@
-.movie{
-    display:block;
-}
-
-.list{
-    margin-left:50px;
-}
-
-.item {
-    display:flex;
+.list {
+    padding: 20px;
+  }
+  
+  .movie {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .item {
+    display: grid;
+    grid-template-columns: 50px 1fr auto; /* 50px для изображения, 1fr для текста, auto для кнопки */
     align-items: center;
+    gap: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .image {
+    width: 40px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .item li {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    background-color: rgb(84, 192, 156);
+    color: #000;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: rgb(58, 120, 99);
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  p {
     margin-bottom: 10px;
-}
+  }
+  
+  button[type="button"] {
+    margin-top: 20px;
+  }
 
 @media screen and (max-width: 768px) {
     .list {

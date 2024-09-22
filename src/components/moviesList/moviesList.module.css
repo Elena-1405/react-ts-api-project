@@ -1,10 +1,50 @@
-
-.info {
-    display: flex;
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .info {
+    display: grid;
+    grid-template-columns: 50px 1fr;
     align-items: center;
-    width: 430px;
-    height: 80px;
-}
+    gap: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .image {
+    width: 40px;
+    height: 50px;
+    object-fit: cover;
+  }
+  
+  .text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .text h4 {
+    margin: 0;
+    display: inline;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .text h4::after {
+    content: " ";
+  }
+  
+  .text p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
 
 @media screen and (max-width: 768px) {
     .info {

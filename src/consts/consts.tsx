@@ -36,3 +36,4 @@ export const emailValidation = {
   required: true,
   pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
 };
+

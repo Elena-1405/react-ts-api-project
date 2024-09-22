@@ -64,36 +64,35 @@ const MovieCard: React.FC = () => {
   return (
     <>
       {isAuth ? (
+        <div className={css.cardContainer}>
         <div className={css.card}>
-          {movieItem && (
-            <div className={css.info}>
-              {movieItem.primaryImage && (
-                <img
-                  src={movieItem.primaryImage?.url}
-                  alt={'MovieImage'}
-                  width={isVerticalImage ? 225 : 400}
-                  height={isVerticalImage ? 300 : 225}
-                />
-              )}
-              <h3>Информация</h3>
-              {movieItem.titleText && <p>Название: {movieItem.titleText?.text}</p>}
-              {movieItem.originalTitleText && (
-                <p>Название на языке оригиналa: {movieItem.originalTitleText?.text}</p>
-              )}
-
-              {movieItem.releaseYear && <p>Release Year: {movieItem.releaseYear?.year}</p>}
-              {movieItem.releaseDate?.day && <p>Release Date: {movieItem.releaseDate?.day}</p>}
-              <div className={css.buttons}>
-                <button type="button" onClick={handleToggleFavorite} className={css.favoriteButton}>
-                  {isFavorite ? 'Из избранного' : 'В избранное'}
-                </button>
-                <button type="button" className={css.backButton} onClick={handleGoBack}>
-                  Обратно к списку
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+ 
+      {movieItem.primaryImage && (
+        <img
+          src={movieItem.primaryImage?.url}
+          alt="MovieImage"
+          width={isVerticalImage ? 225 : 400}
+          height={isVerticalImage ? 300 : 225}
+        />
+      )}<div className={css.info}>
+      <h3>Информация</h3>
+      {movieItem.titleText && <p>Название: {movieItem.titleText?.text}</p>}
+      {movieItem.originalTitleText && (
+        <p>Название на языке оригинала: {movieItem.originalTitleText?.text}</p>
+      )}
+      {movieItem.releaseYear && <p>Release Year: {movieItem.releaseYear?.year}</p>}
+      {movieItem.releaseDate?.day && <p>Release Date: {movieItem.releaseDate?.day}</p>}
+      <div className={css.buttons}>
+        <button type="button" onClick={handleToggleFavorite} className={css.favoriteButton}>
+          {isFavorite ? 'Из избранного' : 'В избранное'}
+        </button>
+        <button type="button" className={css.backButton} onClick={handleGoBack}>
+          Обратно к списку
+        </button>
+      </div>
+    </div>
+</div>
+</div>
       ) : (
         <span className={css.txt}>
           <Link to={RoutePaths.SIGNUP}>

@@ -25,6 +25,7 @@ export const MoviesList = () => {
     fetchData();
   }, []);
 
+
   //Чтобы не дергать каждый раз апи, так как у нас ограничено кол-во запросов
   // useEffect(() => {
   //   const filteredMovies = movieList.filter((movie) => movie.releaseDate !== null);
@@ -34,21 +35,33 @@ export const MoviesList = () => {
   return (
     <>
       {isAuth ? (
-        <div>
-          {Array.isArray(moviesData) &&
-            moviesData.length > 0 &&
-            moviesData.map((movie) => (
-              <div key={movie.id} className={css.info}>
-                <Link to={`${RoutePaths.MOVIECARD}/${movie.id}`}>
-                  <p className={css.info}>
+        <div className={css.container}>
+        {Array.isArray(moviesData) &&
+          moviesData.length > 0 &&
+          moviesData.map((movie) => (
+            <div key={movie.id} className={css.info}>
+              <img
+                  className={css.image}
+                  src={movie.primaryImage?.url}
+                  alt="MovieImage"
+                  width={40}
+                  height={50}
+                />
+              <Link to={`${RoutePaths.MOVIECARD}/${movie.id}`} className={css.link}>
+                <div className={css.text}>
+                  <p>
                     <h4>Название:&nbsp;</h4>
-                    {movie.titleText?.text}&nbsp;&nbsp;<h4> Год:&nbsp;</h4>
+                    {movie.titleText?.text}
+                  </p>
+                  <p>
+                    <h4>Год:&nbsp;</h4>
                     {movie.releaseYear?.year}
                   </p>
-                </Link>
-              </div>
-            ))}
-        </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+      </div>
       ) : (
         <span>
           <Link to={RoutePaths.SIGNUP}>
